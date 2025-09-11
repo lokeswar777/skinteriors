@@ -2,7 +2,7 @@
 :root {
   --primary-dark: #343a40; /* Charcoal Grey */
   --primary-light: #f8f9fa; /* Warm Off-white */
-  --accent-color: #c09f80; /* Soft Gold/Bronze */
+  --accent-color: #0c9777; /* Soft Gold/Bronze */
   --secondary-accent: #6c757d; /* Muted Grey */
 }
 
@@ -22,11 +22,13 @@ body {
 
 /* Header / Hero Section */
 .hero {
-  background: linear-gradient(135deg, var(--primary-dark), var(--secondary-accent));
+  background-image: url("Images/modern-living-room-interior-design.jpg");
   color: var(--primary-light);
   text-align: center;
-  padding: 90px 20px;
+  padding: 200px 20px; /* Increased top/bottom padding from 90px */
   border-bottom: 6px solid var(--accent-color);
+  background-size: cover;
+  background-position: center;
 }
 /* Brand Styling */
 .hero .brand {
