@@ -14,14 +14,14 @@
     </header>
 
     <!-- Contact Section -->
-    <section class="contact">
+    <section class="contact fade-in">
       <h2>Contact Details</h2>
       <ul>
         <li>
           Email:
-          <a href="mailto:skinteriors@gmail.com">skinteriors@gmail.com</a>
+          <a href="mailto:interiorsbysk55@gmail.com">interiorsbysk55@gmail.com</a>
         </li>
-        <li>Phone: <a href="tel:+919876543210">+91 9876543210</a></li>
+        <li>Phone: <a href="tel:+917337014775">+91 73370 14775</a></li>
         <li>
           Instagram:
           <a href="https://instagram.com/skinteriors" target="_blank"
@@ -33,7 +33,7 @@
     </section>
 
     <!-- Portfolio Section -->
-    <section class="portfolio">
+    <section class="portfolio fade-in">
       <h2>Previous Works</h2>
 
       <!-- Kitchen -->
@@ -68,45 +68,14 @@
     </section>
 
     <!-- Call To Action -->
-    <section class="cta">
-      <a href="tel:+919876543210" class="call-btn">📞 Call Us Now</a>
+    <section class="cta fade-in">
+      <a href="tel:+917337014775" class="call-btn">📞 Call Us Now</a>
     </section>
 
-    <footer>
+    <footer class="fade-in">
       <p>© 2025 SK Interiors | All Rights Reserved</p>
     </footer>
 
-    <!-- js -->
-
-    <script>
-      // Fade-in on scroll
-      const observers = document.querySelectorAll(".fade-in");
-      const io = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("visible");
-              io.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.2 }
-      );
-      observers.forEach((el) => io.observe(el));
-
-      // Simple auto-scroll carousel
-      document.querySelectorAll(".carousel").forEach((carousel) => {
-        let scrollAmount = 0;
-        setInterval(() => {
-          if (carousel.scrollWidth > carousel.clientWidth) {
-            scrollAmount += 300;
-            if (scrollAmount >= carousel.scrollWidth - carousel.clientWidth) {
-              scrollAmount = 0;
-            }
-            carousel.scrollTo({ left: scrollAmount, behavior: "smooth" });
-          }
-        }, 4000); // every 4s
-      });
-    </script>
+    <script src="app.js" defer></script>
   </body>
 </html>
