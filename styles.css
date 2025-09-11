@@ -150,9 +150,13 @@ body {
   display: flex;
   gap: 12px;
   overflow-x: auto;
-  scroll-snap-type: x mandatory;
   padding: 10px; /* Add padding for shadow visibility */
   scrollbar-width: thin; /* For Firefox */
+}
+
+/* Hide scrollbar for Webkit browsers (Chrome, Safari) */
+.carousel::-webkit-scrollbar {
+  display: none;
 }
 
 .carousel img {

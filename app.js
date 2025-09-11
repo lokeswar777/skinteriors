@@ -14,20 +14,33 @@ const io = new IntersectionObserver(
 observers.forEach((el) => io.observe(el));
 
 // Simple auto-scroll carousel
-document.querySelectorAll(".carousel").forEach((carousel) => {
+function setupContinuousScroll(carousel) {
+  const carouselContent = Array.from(carousel.children);
+  // Duplicate content for seamless looping
+  carouselContent.forEach(item => {
+    const duplicate = item.cloneNode(true);
+    carousel.appendChild(duplicate);
+  });
+
   let scrollAmount = 0;
-  const scrollInterval = 4000; // every 4s
+  const scrollSpeed = 0.5; // Adjust for speed (lower is slower)
 
-  setInterval(() => {
-    // Pause autoscroll if user is hovering over the carousel
-    if (carousel.matches(":hover") || carousel.scrollWidth <= carousel.clientWidth) {
-      return;
+  function animateScroll() {
+    // Pause on hover
+    if (!carousel.matches(':hover')) {
+      scrollAmount += scrollSpeed;
+      // If scrolled past the original content, reset to the beginning
+      if (scrollAmount >= carousel.scrollWidth / 2) {
+        scrollAmount = 0;
+      }
+      carousel.scrollTo({ left: scrollAmount, behavior: 'auto' });
     }
+    requestAnimationFrame(animateScroll);
+  }
 
-    scrollAmount += carousel.clientWidth * 0.8; // Scroll by 80% of visible width
-    if (scrollAmount >= carousel.scrollWidth - carousel.clientWidth) {
-      scrollAmount = 0;
-    }
-    carousel.scrollTo({ left: scrollAmount, behavior: "smooth" });
-  }, scrollInterval);
-});
+  // Only start if the content overflows
+  if (carousel.scrollWidth > carousel.clientWidth) {
+    requestAnimationFrame(animateScroll);
+  }
+}
+document.querySelectorAll(".carousel").forEach(setupContinuousScroll);
